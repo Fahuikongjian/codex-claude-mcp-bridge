@@ -11,6 +11,14 @@ Claude Code → MCP bridge (--host claude) → codex exec
 
 Tasks return an ID immediately. Poll for a final result, or cancel the CLI process tree. Both installations can coexist. A shared workspace lock serializes bridge tasks, and an inherited child marker blocks recursive bridge delegation.
 
+## Claude Desktop and custom model gateways
+
+Claude Desktop and Claude Code are different hosts. This release's bidirectional adapters launch **Codex CLI and Claude Code CLI**; installing Claude Desktop does not supply a `claude --print` executable or its authentication.
+
+Desktop can connect to the existing Codex-facing MCP server as a local MCP client using `--host claude`. This direction requires Codex CLI and its authentication, but does not launch Claude Code. A [Desktop configuration example](examples/claude-desktop.json) and [gateway compatibility guide](docs/claude-desktop-and-gateways.md) are included. This Desktop path has not been exercised in the actual Desktop application.
+
+If Desktop uses DeepSeek through a custom gateway, tool execution depends on that setup preserving MCP tool use. The reverse path from Codex to that gateway/model is **not implemented or verified in this release**. A gateway API call would create a separate model request; it would not automatically control Desktop or access its current chat. Gateway-specific integration requires the product/API details.
+
 ## Install
 
 Requirements: Node.js 22+, Git, and separately installed/authenticated [Codex CLI](https://developers.openai.com/codex/cli/) and [Claude Code](https://code.claude.com/docs/en/setup). Use a trusted local workspace. Calls consume the destination CLI account's usage.

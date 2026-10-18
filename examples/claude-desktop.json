@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "codex_bridge": {
+      "command": "C:/path/to/node.exe",
+      "args": [
+        "C:/path/to/codex-claude-mcp-bridge/bin/bridge.mjs",
+        "serve",
+        "--host",
+        "claude",
+        "--workspace",
+        "C:/path/to/your-project"
+      ]
+    }
+  }
+}

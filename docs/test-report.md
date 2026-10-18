@@ -28,6 +28,10 @@ node scripts/smoke.mjs --provider claude --workspace /absolute/path/your-project
 
 This report does not claim successful live UI-host tool selection, shared existing chat sessions, or live editing of a user project. The MCP client in the smoke test replaces the calling host; the destination CLI and Codex model are real.
 
+## Desktop environment clarification
+
+After the CLI tests, the installed application was clarified to be Claude Desktop using a custom gateway to DeepSeek. The earlier CLI authentication failure does not establish the Desktop application's authentication state. No model-backed test against that gateway or the Desktop UI has been performed. The [Desktop/gateway guide](claude-desktop-and-gateways.md) documents an existing MCP-client configuration path to Codex and the unimplemented reverse gateway path. Its JSON example was checked for valid syntax and the existing `--host claude` launch arguments. The 37 automated tests and six CI jobs above validate the CLI bridge source; they do not validate the custom Desktop/gateway environment.
+
 ## Automated coverage
 
 - Both direction profiles and the combined profile: real MCP stdio initialization, discovery, calls, schema rejection, polling, and structured results.
