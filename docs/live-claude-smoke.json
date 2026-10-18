@@ -1,0 +1,22 @@
+{
+  "provider": "claude",
+  "started_at": "2026-10-18T09:37:25.424Z",
+  "protocol": "MCP stdio",
+  "checks": {
+    "tool_discovery": true,
+    "model_reply": false
+  },
+  "task": {
+    "id": "7d139b37-6159-4af5-8674-c3cafbcf4809",
+    "provider": "claude",
+    "cwd": "C:\\Users\\Fahuikongjian\\Documents\\Codex\\2026-10-18\\github-plugin-github-openai-curated-remote\\work\\bridge-live-workspace",
+    "mode": "consult",
+    "state": "failed",
+    "started_at": "2026-10-18T09:37:26.039Z",
+    "timeout_seconds": 90,
+    "exit_code": 1,
+    "error": "CLI exited with code 1. Claude Code reported an error: Not logged in · Please run /login",
+    "finished_at": "2026-10-18T09:37:27.989Z"
+  },
+  "finished_at": "2026-10-18T09:37:28.016Z"
+}

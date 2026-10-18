@@ -1,0 +1,20 @@
+{
+  "name": "codex-claude-mcp-bridge",
+  "version": "1.0.0",
+  "description": "Bidirectional local MCP bridge between Codex and Claude Code with bounded, isolated CLI tasks.",
+  "type": "module",
+  "bin": { "codex-claude-bridge": "bin/bridge.mjs" },
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node bin/bridge.mjs serve",
+    "test": "node --test --test-concurrency=1 test/*.test.mjs",
+    "check": "node --check bin/bridge.mjs && node --check lib/config.mjs && node --check lib/tasks.mjs && node --check lib/server.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "zod": "4.6.7"
+  },
+  "files": ["bin/", "lib/", "README.md", "LICENSE", "examples/", "scripts/", "docs/", ".claude-plugin/", ".mcp.json"],
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/Fahuikongjian/codex-claude-mcp-bridge.git" }
+}

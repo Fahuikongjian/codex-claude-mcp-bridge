@@ -1,0 +1,3 @@
+Validating plugin manifest: C:\Users\Fahuikongjian\Documents\Codex\2026-10-18\github-plugin-github-openai-curated-remote\outputs\codex-claude-mcp-bridge\.claude-plugin\plugin.json
+
+√ Validation passed

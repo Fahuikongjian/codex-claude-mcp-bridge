@@ -1,0 +1,49 @@
+
+> codex-claude-mcp-bridge@1.0.0 test
+> node --test --test-concurrency=1 test/*.test.mjs
+
+✔ codex: CLI subprocess receives stdin, directory, marker, and bounded permissions (282.221ms)
+✔ codex: invalid does not become a successful result (256.5244ms)
+✔ codex: missing does not become a successful result (228.9634ms)
+✔ codex: error does not become a successful result (251.9091ms)
+✔ codex: exit does not become a successful result (251.4099ms)
+✔ codex: oversize does not become a successful result (1123.8002ms)
+✔ codex: large-result does not become a successful result (235.7186ms)
+✔ claude: CLI subprocess receives stdin, directory, marker, and bounded permissions (237.3039ms)
+✔ claude: invalid does not become a successful result (222.7911ms)
+✔ claude: missing does not become a successful result (239.4414ms)
+✔ claude: error does not become a successful result (226.1222ms)
+✔ claude: exit does not become a successful result (216.4709ms)
+✔ claude: oversize does not become a successful result (1112.1117ms)
+✔ claude: large-result does not become a successful result (259.8336ms)
+✔ direction profiles expose only the opposite provider (11.0913ms)
+✔ inherited child marker prevents recursive delegation (9.967ms)
+✔ edit mode is denied until server owner opts in (14.4455ms)
+✔ explicit edit policy uses workspace sandbox / limited edit tools (490.8199ms)
+✔ parent traversal and external absolute paths are rejected (11.0513ms)
+✔ symlink or junction cannot escape workspace (11.9126ms)
+✔ subdirectory inside workspace is accepted (360.3765ms)
+✔ same-server concurrent starts are rejected without losing first task (1057.1107ms)
+✔ two independent managers cannot run against the same workspace (1217.6147ms)
+✔ timeout kills the CLI and releases lock (1985.3386ms)
+✔ cancel terminates child and descendant processes (1208.6443ms)
+✔ shutdown cancels active work and denies new work (1006.277ms)
+✔ missing executable becomes a failed task and releases lock (27.8691ms)
+✔ unknown task IDs fail clearly (12.156ms)
+✔ strict command configuration rejects unknown keys and shell launchers (2.9806ms)
+✔ Codex failure after an earlier message is still a failure (0.2611ms)
+✔ Claude permission denials are included for caller inspection (0.1266ms)
+✔ Claude authentication error is not described as a success (0.0843ms)
+✔ terminal status is visible only after lock cleanup finishes (331.3213ms)
+✔ config generator emits valid JSON and TOML without writing host files (1118.3456ms)
+✔ MCP stdio handshake, discovery, calls and schema validation (codex) (882.3817ms)
+✔ MCP stdio handshake, discovery, calls and schema validation (claude) (869.1308ms)
+✔ MCP stdio handshake, discovery, calls and schema validation (both) (886.8303ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17237.2848

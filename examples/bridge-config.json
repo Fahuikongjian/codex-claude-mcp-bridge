@@ -1,0 +1,4 @@
+{
+  "codex": { "command": ["C:/tools/codex.exe"] },
+  "claude": { "command": ["C:/tools/claude.exe"] }
+}

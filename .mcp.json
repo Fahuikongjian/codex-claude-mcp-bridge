@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "codex_bridge": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/bin/bridge.mjs", "serve", "--host", "claude", "--workspace", "${CLAUDE_PROJECT_DIR}"]
+    }
+  }
+}
