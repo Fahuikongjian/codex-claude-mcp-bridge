@@ -1,6 +1,6 @@
 {
   "name": "codex-claude-mcp-bridge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Call Codex from Claude Code through a local MCP task bridge.",
   "author": { "name": "Fahuikongjian" },
   "homepage": "https://github.com/Fahuikongjian/codex-claude-mcp-bridge",

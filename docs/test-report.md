@@ -1,5 +1,7 @@
 # Validation report
 
+Historical report for the v1.0 CLI bridge. See the [v1.1 validation report](test-report-v1.1.md) for the direct DeepSeek API adapter and explicit Desktop host profile.
+
 Date: 2026-10-18. Environment: Windows, Node.js 24.14.0, npm 11.9.0.
 
 ## Results and scope

@@ -1,0 +1,11 @@
+{
+  "provider": "deepseek",
+  "started_at": "2026-10-18T10:19:33.809Z",
+  "protocol": "MCP stdio",
+  "checks": {
+    "model_reply": false,
+    "tool_discovery": true
+  },
+  "error": "Set DEEPSEEK_API_KEY in the bridge server environment to call DeepSeek. Do not send the key in a tool argument.",
+  "finished_at": "2026-10-18T10:19:34.447Z"
+}

@@ -202,7 +202,7 @@ test('config generator emits valid JSON and TOML without writing host files', as
   assert.ok(codex.stdout.startsWith('[mcp_servers.claude_bridge]'));
 });
 
-for (const host of ['codex', 'claude', 'both']) {
+for (const host of ['codex', 'claude', 'desktop', 'both']) {
   test(`MCP stdio handshake, discovery, calls and schema validation (${host})`, async t => {
     const { root, scratch } = await setup(t);
     const { writeFile } = await import('node:fs/promises');
@@ -217,8 +217,8 @@ for (const host of ['codex', 'claude', 'both']) {
     const names = list.tools.map(tool => tool.name);
     assert.ok(names.includes('get_task') && names.includes('cancel_task') && names.includes('bridge_status'));
     assert.equal(names.includes('start_codex_task'), host !== 'codex');
-    assert.equal(names.includes('start_claude_task'), host !== 'claude');
-    const provider = host === 'claude' ? 'codex' : 'claude';
+    assert.equal(names.includes('start_claude_task'), !['claude', 'desktop'].includes(host));
+    const provider = ['claude', 'desktop'].includes(host) ? 'codex' : 'claude';
     const invalid = await client.callTool({ name: `start_${provider}_task`, arguments: { prompt: 'x', timeout_seconds: 0 } });
     assert.equal(invalid.isError, true);
     const start = await client.callTool({ name: `start_${provider}_task`, arguments: { prompt: 'MCP round-trip' } });

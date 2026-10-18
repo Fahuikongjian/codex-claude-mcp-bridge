@@ -1,4 +1,4 @@
-// Optional live test. Invokes the authenticated local CLI and can consume account usage.
+// Optional live test. Invokes an authenticated CLI or DeepSeek API and can consume account usage.
 import { parseArgs } from 'node:util';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,22 +8,24 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 const { values } = parseArgs({ options: {
   provider: { type: 'string' }, workspace: { type: 'string' }, config: { type: 'string' },
 } });
-if (!['codex', 'claude'].includes(values.provider) || !values.workspace || !path.isAbsolute(values.workspace)) {
-  throw new Error('Usage: node scripts/smoke.mjs --provider codex|claude --workspace ABSOLUTE_PATH [--config FILE]');
+if (!['codex', 'claude', 'deepseek'].includes(values.provider) || !values.workspace || !path.isAbsolute(values.workspace)) {
+  throw new Error('Usage: node scripts/smoke.mjs --provider codex|claude|deepseek --workspace ABSOLUTE_PATH [--config FILE]');
 }
 const transport = new StdioClientTransport({ command: process.execPath,
   args: [fileURLToPath(new URL('../bin/bridge.mjs', import.meta.url)), 'serve', '--host', values.provider === 'codex' ? 'claude' : 'codex',
+    ...(values.provider === 'deepseek' ? ['--peer', 'deepseek'] : []),
     '--workspace', values.workspace, ...(values.config ? ['--config', values.config] : [])], stderr: 'pipe' });
 let serverErrors = '';
 transport.stderr?.on('data', chunk => { serverErrors += chunk; });
 const client = new Client({ name: 'bridge-live-smoke', version: '1.0.0' });
-const report = { provider: values.provider, started_at: new Date().toISOString(), protocol: 'MCP stdio', checks: {} };
+const report = { provider: values.provider, started_at: new Date().toISOString(), protocol: 'MCP stdio', checks: { model_reply: false } };
 try {
   await client.connect(transport);
   const list = await client.listTools();
   report.checks.tool_discovery = list.tools.some(tool => tool.name === `start_${values.provider}_task`);
   const start = await client.callTool({ name: `start_${values.provider}_task`, arguments: {
     prompt: 'Do not use any tools or access files. Compute 17 + 25. Respond with exactly BRIDGE_OK 42.', timeout_seconds: 90,
+    ...(values.provider === 'deepseek' ? { max_output_tokens: 64 } : {}),
   } });
   if (start.isError) throw new Error(start.content[0].text);
   let result;

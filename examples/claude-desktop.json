@@ -6,7 +6,7 @@
         "C:/path/to/codex-claude-mcp-bridge/bin/bridge.mjs",
         "serve",
         "--host",
-        "claude",
+        "desktop",
         "--workspace",
         "C:/path/to/your-project"
       ]
