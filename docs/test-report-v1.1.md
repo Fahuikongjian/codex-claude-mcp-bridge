@@ -14,7 +14,9 @@ This release adds a direct official DeepSeek API consultation adapter and an exp
 | MCP protocol integration | Passed | New tool discovery, schema validation, asynchronous task results, cancellation, and credential setup errors |
 | Desktop host profile | Passed with MCP stdio client and CLI fixture | Actual Desktop UI operation has not been tested |
 | Official DeepSeek model response | Not executed | `DEEPSEEK_API_KEY` and `DEEPSEEK_MODEL` were absent from this process; [setup-check output](deepseek-setup-check.json) |
-| Cross-platform v1.1 CI | Pending at publication | Check the repository Actions run for this implementation commit; v1.0 CI results are recorded separately |
+| Cross-platform v1.1 CI | All six jobs passed | Windows, macOS, Linux with Node 22/24; [run #2](https://github.com/Fahuikongjian/codex-claude-mcp-bridge/actions/runs/39118884673), [job evidence](ci-results-v1.1.json) |
+
+GitHub Actions tested implementation commit `8a68e60d5138646440fc1dc421937b324fa46c30`. Every matrix job completed locked dependency installation, syntax validation, and all 59 tests. This CI evidence was added afterward in a documentation-only commit.
 
 ## New coverage
 
