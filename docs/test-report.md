@@ -12,7 +12,9 @@ Date: 2026-10-18. Environment: Windows, Node.js 24.14.0, npm 11.9.0.
 | Real MCP → Claude Code CLI | Authentication failure correctly returned | Claude Code `2.1.100`; [recorded failure](live-claude-smoke.json) |
 | Claude Code native plugin manifest | Passed | `claude plugin validate` on `2.1.100`; [CLI validation output](plugin-validation.txt) |
 | Dependency audit | Passed | No vulnerabilities reported by npm on the locked dependency set |
-| macOS / Linux and Node 22 | Not locally executed | CI matrix is configured; actual GitHub Actions results must be checked separately |
+| Windows / macOS / Linux, Node 22 and 24 | Passed on GitHub Actions | All six jobs succeeded; [run #1](https://github.com/Fahuikongjian/codex-claude-mcp-bridge/actions/runs/39116451707), [job evidence](ci-results.json) |
+
+GitHub Actions tested source commit `2ab574dc42f7623141e09989b0ee56f877d0f5dc`. Every matrix job completed dependency installation, syntax validation, and the automated suite. This evidence was added afterward in a documentation-only commit.
 
 The model-backed Codex task used a real MCP stdio client, discovered `start_codex_task`, launched the actual installed Codex executable, and polled `get_task`. Its request was: compute 17 + 25 without using tools or reading files and return `BRIDGE_OK 42`. The exact response matched.
 
